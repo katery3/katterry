@@ -1,0 +1,5 @@
+text = input('Введите текст: ') 
+ 
+for i in text.split():
+    if(i.startswith("а") or i.startswith("А") or i.endswith("я")):
+        print(i)
