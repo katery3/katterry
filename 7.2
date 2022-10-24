@@ -1,0 +1,36 @@
+from math import sqrt
+def distance(x1, x2, y1, y2):
+  return sqrt((x1-x2)**2 + (y1-y2)**2)
+x1 = float(input("x1="))
+x2 = float(input("x2="))
+y1 = float(input("y1="))
+y2 = float(input("y2="))
+p1 = float(input("p1="))
+p2 = float(input("p2="))
+z1 = float(input("z1="))
+z2 = float(input("z2="))
+k = sqrt((x1-x2)**2 + (y1-y2)**2)
+print (k)
+def distance(x1, x2, p1, p2):
+  return  sqrt((x1-x2)**2 + (p1-p2)**2)
+c=sqrt((x1-x2)**2 + (p1-p2)**2)
+print (c)
+def distance(x1, x2, z1, z2):
+  return  sqrt((x1-x2)**2 + (z1-z2)**2)
+l=sqrt((x1-x2)**2 + (z1-z2)**2)
+print (l)
+def distance(y1, y2, z1, z2):
+  return  sqrt((y1-y2)**2 + (z1-z2)**2)
+i=sqrt((y1-y2)**2 + (z1-z2)**2)
+print (i)
+def distance(y1, y2, p1, p2):
+ return sqrt((y1-y2)**2 + (p1-p2)**2)
+n=sqrt((y1-y2)**2 + (p1-p2)**2)
+print (n)
+def distance(p1, p2, z1, z2):
+  return  sqrt((p1-p2)**2 + (z1-z2)**2)
+u=sqrt((p1-p2)**2 + (z1-z2)**2)
+print (u)
+m=[k,c,l,i,n,u]
+max_m=max(m)
+print("наибольшая дистанция",max_m)
