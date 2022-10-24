@@ -1,0 +1,17 @@
+def krr(M, N):
+    nums = range(M, N+1)
+    result = []
+    maximal = [0, 0]
+    for i in nums:
+        div = 0
+        for z in range(1, i+1):
+            if not i % z:
+                div += 1
+        result.append([i, div])
+    for i in result:
+        if i[1] > maximal[1]:
+            maximal = i
+    print(max(maximal))
+    return maximal
+ 
+krr(int(input()),int(input()))
