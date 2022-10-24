@@ -1,0 +1,10 @@
+s=[]
+a=input()
+b=input()
+c=input()
+k=input()
+s=[a,b,c,k]
+i=s.index(max(s))
+l=s.index(min(s))
+s[i],s[l]=s[l],s[i]
+print(s)
