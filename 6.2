@@ -1,0 +1,13 @@
+from functools import reduce
+import operator
+inp_lst=[25,32,86,64,83,32,35,98,75,14]
+s=0
+lst_len = len(inp_lst)
+for i in range(len(inp_lst)):
+    s+=inp_lst[i]
+lst_avg = s/len(inp_lst)
+print(lst_avg)
+for i in range(len(inp_lst)):
+    if inp_lst[i]>lst_avg:
+        inp_lst[i]=1
+    print(inp_lst[i])
