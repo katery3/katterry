@@ -1,0 +1,113 @@
+from tkinter import * 
+from tkinter import ttk 
+from tkinter import messagebox 
+from tkinter.ttk import Combobox 
+from tkinter.ttk import Checkbutton 
+from tkinter.ttk import Radiobutton 
+from tkinter import Menu 
+ 
+def calkulator(sign, number1, number2): 
+    result = 0 
+    if sign == '+': 
+        result = number1 + number2 
+    if sign == '-': 
+        result = number1 - number2 
+    if sign == '*': 
+        result = number1 * number2 
+    if sign == '/': 
+        result = number1 / number2 
+    return result 
+ 
+def f_zad(): 
+    res = "Результат: {}".format(calkulator(combo.get(), int(txt.get()), int(txt1.get()))) 
+    lbl1.configure(text=res) 
+ 
+def checkboxes (rad, rad2, rad3): 
+    if (rad == True): 
+        return 1 
+    if (rad2 == True): 
+        return 2 
+    if (rad3 == True): 
+        return 3 
+ 
+def s_zad(): 
+    messagebox.showinfo('Ваш выбор',"Вы выбрали вкладку № : {}".format(checkboxes (rad.get(), rad2.get(), rad3.get()))) 
+
+def new_file(): 
+    n=open('Your lyricist.txt','a+') 
+    messagebox.showinfo('Создание файла', 'Файл успешно создан под именем Your lyricist ') 
+ 
+def open_file(): 
+    file = open('Your lyricist.txt', 'r') 
+    res = file.readline() 
+    lbl2.configure(text=res) 
+    text.insert(1.0, res) 
+    file.close() 
+ 
+root = Tk() 
+root.title("Шинкаренко Екатерина Сергеевна") 
+root.geometry('500x260') 
+root.resizable(width = False, height = False) 
+root["bg"] = "black" 
+ 
+main_menu = Menu() 
+file_menu = Menu(tearoff=False) 
+main_menu.add_cascade(label="File",menu=file_menu)
+ 
+file_menu.add_command(label="New",command=new_file) 
+file_menu.add_command(label="Open",command=open_file) 
+file_menu.add_separator() 
+root.config(menu=main_menu) 
+ 
+rad_control = ttk.Notebook(root) 
+tab1 = ttk.Frame(rad_control) 
+style = ttk.Style(tab1) 
+tab2 = ttk.Frame(rad_control) 
+tab3 = ttk.Frame(rad_control) 
+tab4 = ttk.Frame(rad_control) 
+tab5 = ttk.Frame(rad_control) 
+style.configure('TLabel', background='black', foreground='white') 
+style.configure('TFrame', background='black') 
+ 
+k = ttk.Style() 
+k.configure('custom.TRadiobutton', background='black', foreground='red') 
+rad_control.add(tab1, text='Калькулятор') 
+vvod = Entry(tab1, width=23,bg='red') 
+vvod.grid(column=1, rows=1) 
+combo = Combobox(tab1) 
+combo['values'] = ('+', '-', '*', '/') 
+combo.current(0) 
+combo.grid(column=1, row=2) 
+vvod2 = Entry(tab1, width=23,bg='red') 
+vvod2.grid(column=1, rows=3) 
+btn = Button(tab1, text="Посчитать", command=f_zad) 
+btn.grid(column=3, row=3) 
+lbl1 = Label(tab1, text='Результат: ',bg='red') 
+lbl1.grid(column=3, row=2)
+ 
+rad_control.add(tab3, text='                                       ') 
+rad_control.add(tab2, text='Чекбоксы') 
+rad = BooleanVar() 
+rad.set(False) 
+rad2 = BooleanVar() 
+rad2.set(False) 
+rad3 = BooleanVar() 
+rad3.set(False) 
+radb = Checkbutton(tab2, text='Первый', var=rad) 
+radb2 = Checkbutton(tab2, text='Второй', var=rad2) 
+radb3 = Checkbutton(tab2, text='Третий ', var=rad3) 
+radb.grid(column=0, row=0) 
+radb2.grid(column=0, row=1) 
+radb3.grid(column=0, row=2) 
+btn1 = Button(tab2, text="Вывести", command=s_zad) 
+btn1.grid(column=2, row=1) 
+ 
+rad_control.add(tab4, text='                                        ') 
+rad_control.add(tab5, text='Работа с текстом') 
+lbl2 = Label(tab5, text='Место вывода данных текстовика ',bg='red') 
+lbl2.grid(column=0, row=0) 
+text = Text(width=60, height=10, bg="white", fg='black', wrap = WORD) 
+text.pack() 
+ 
+rad_control.pack(expand=1, fill='both') 
+root.mainloop()
