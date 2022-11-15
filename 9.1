@@ -1,0 +1,19 @@
+file = open("F:/Шинкаренко Екатерина_УБ-21_vvod.txt", "r")
+n = 5
+m = 3
+l = [[file.readline().split() for j in range(n)] for i in range(n)]
+file.close()
+print(*l, sep='\n')
+print()
+
+ll = []
+for i in range(len(l)):
+    ll.append(l[i][i])
+
+maxid = ll.index(max(ll))
+l[maxid], l[m] = l[m], l[maxid]
+print(*l, sep='\n')
+
+with open('F:/Шинкаренко Екатерина_УБ-21_vivod.txt', 'w') as out:
+  for i in l:
+        out.write(' '.join([str(l) for l in i]) + '\n')
